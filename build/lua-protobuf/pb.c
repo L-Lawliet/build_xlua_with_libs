@@ -21,6 +21,10 @@ PB_NS_BEGIN
 #include <stdio.h>
 #include <errno.h>
 
+#if LUA_VERSION_NUM < 503
+#include <stdint.h>
+#endif
+
 
 /* Lua util routines */
 
