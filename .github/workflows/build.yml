@@ -125,8 +125,6 @@ jobs:
       
       - name: Insatll MSVC
         uses: microsoft/setup-msbuild@v1.0.2
-        with:
-          vs-version: '15.0'
       
       - name: Build
         run: |
