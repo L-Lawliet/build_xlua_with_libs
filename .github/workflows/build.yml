@@ -129,17 +129,17 @@ jobs:
       
       - name: Build
         run: |
-          echo 'vs version:' $VS_VERSION
+          echo 'vs version:' $env:VS_VERSION
           cd build
-          .\make_win_lua54.bat $VS_VERSION
-          .\make_win32_lua53.bat $VS_VERSION
-          .\make_win64_lua53.bat $VS_VERSION
+          .\make_win_lua54.bat $env:VS_VERSION
+          .\make_win32_lua53.bat $env:VS_VERSION
+          .\make_win64_lua53.bat $env:VS_VERSION
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Build Luajit
         run: |
           cd build
-          echo 'vs version:' $VS_VERSION
-          .\make_win64_luajit.bat $VS_VERSION
+          echo 'vs version:' $env:VS_VERSION
+          .\make_win64_luajit.bat $env:VS_VERSION
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
