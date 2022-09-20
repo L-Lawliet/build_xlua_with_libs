@@ -1,5 +1,9 @@
 mkdir build64 & pushd build64
-cmake -G "Visual Studio 15 2017 Win64" ..
+IF "%1" == "16" (
+    cmake -G "Visual Studio 16 2019" ..
+) ELSE (
+    cmake -G "Visual Studio 15 2017 Win64" ..
+)
 popd
 cmake --build build64 --config Release
 md plugin_lua53\Plugins\x86_64

@@ -127,16 +127,20 @@ jobs:
         uses: microsoft/setup-msbuild@v1.0.2
       
       - name: Build
+        env:
+          vs_version: "16"
         run: |
           cd build
-          .\make_win_lua54.bat
-          .\make_win32_lua53.bat
-          .\make_win64_lua53.bat
+          .\make_win_lua54.bat $vs_version
+          .\make_win32_lua53.bat $vs_version
+          .\make_win64_lua53.bat $vs_version
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Build Luajit
+        env:
+          vs_version: "16"
         run: |
           cd build
-          .\make_win64_luajit.bat
+          .\make_win64_luajit.bat $vs_version
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
