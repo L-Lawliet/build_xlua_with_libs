@@ -121,7 +121,7 @@ jobs:
           path: ./build/plugin_luajit/**/*
           name: plugin_luajit_osx  
   windows:
-    runs-on: windows-2016
+    runs-on: windows-2022
 
     steps:
       - uses: actions/checkout@v2
@@ -158,22 +158,25 @@ jobs:
 
   publish:
     runs-on: ubuntu-latest
-    needs: [windows,osx,ios,android]
+    needs: [windows,osx,ios,android,linux]
     steps:
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v4
         with:
-          name: plugin_luajit
+          pattern: plugin_luajit_*
           path: plugin_luajit/
+          merge-multiple: true
           
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v4
         with:
-          name: plugin_lua53
+          pattern: plugin_lua53_*
           path: plugin_lua53/
+          merge-multiple: true
           
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v4
         with:
-          name: plugin_lua54
+          pattern: plugin_lua54_*
           path: plugin_lua54/
+          merge-multiple: true
           
       - name: Create Release Asset
         run: |
@@ -224,3 +227,4 @@ jobs:
           asset_path: ./lua54_${{ github.event.inputs.tag_name }}.tgz
           asset_name: lua54_${{ github.event.inputs.tag_name }}.tgz
           asset_content_type: application/tgz
+   

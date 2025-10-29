@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           path: ./build/plugin_lua53/**/*
-          name: plugin_lua53_android   
+          name: plugin_lua53_android 
       #- name: UploadJit
       #  uses: actions/upload-artifact@v2
       #  with:
@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           path: ./build/plugin_lua54/**/*
-          name: plugin_lua54_linux
+          name: plugin_lua54_linux  
       - name: Upload53
         uses: actions/upload-artifact@v4
         with:
@@ -120,9 +120,8 @@ jobs:
           path: ./build/plugin_luajit/**/*
           name: plugin_luajit_osx  
   windows:
-    runs-on: windows-2019
-    env:
-      VS_VERSION: 16
+    runs-on: windows-2022
+
     steps:
       - uses: actions/checkout@v2
       
@@ -131,17 +130,15 @@ jobs:
       
       - name: Build
         run: |
-          echo 'vs version:' $env:VS_VERSION
           cd build
-          .\make_win_lua54.bat $env:VS_VERSION
-          .\make_win32_lua53.bat $env:VS_VERSION
-          .\make_win64_lua53.bat $env:VS_VERSION
+          .\make_win_lua54.bat
+          .\make_win32_lua53.bat
+          .\make_win64_lua53.bat
       - uses: ilammy/msvc-dev-cmd@v1
       - name: Build Luajit
         run: |
           cd build
-          echo 'vs version:' $env:VS_VERSION
-          .\make_win64_luajit.bat $env:VS_VERSION
+          .\make_win64_luajit.bat
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
