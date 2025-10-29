@@ -4,4 +4,3 @@ cd ..
 cmake --build build_osx_54 --config Release
 mkdir -p plugin_lua54/Plugins/xlua.bundle/Contents/MacOS/
 cp build_osx_54/Release/xlua.bundle/Contents/MacOS/xlua plugin_lua54/Plugins/xlua.bundle/Contents/MacOS/xlua
-
