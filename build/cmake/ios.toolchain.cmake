@@ -57,6 +57,7 @@
 #    OS64COMBINED = Build for arm64 x86_64 iphoneOS. Combined into FAT STATIC lib (supported on 3.14+ of CMakewith "-G Xcode" argument ONLY)
 #    SIMULATOR = Build for x86 i386 iphoneOS Simulator.
 #    SIMULATOR64 = Build for x86_64 iphoneOS Simulator.
+#    SIMULATORARM64 = Build for arm64 iphoneOS Simulator.
 #    TVOS = Build for arm64 tvOS.
 #    TVOSCOMBINED = Build for arm64 x86_64 tvOS. Combined into FAT STATIC lib (supported on 3.14+ of CMake with "-G Xcode" argument ONLY)
 #    SIMULATOR_TVOS = Build for x86_64 tvOS Simulator.
@@ -89,6 +90,7 @@
 #    OS64 = arm64 (if applicable)
 #    SIMULATOR = i386
 #    SIMULATOR64 = x86_64
+#    SIMULATORARM64 = arm64
 #    TVOS = arm64
 #    SIMULATOR_TVOS = x86_64 (i386 has since long been deprecated)
 #    WATCHOS = armv7k arm64_32 (if applicable)
@@ -254,6 +256,11 @@ elseif(PLATFORM_INT STREQUAL "SIMULATOR64")
   set(SDK_NAME iphonesimulator)
   if(NOT ARCHS)
     set(ARCHS x86_64)
+  endif()
+elseif(PLATFORM_INT STREQUAL "SIMULATORARM64")
+  set(SDK_NAME iphonesimulator)
+  if(NOT ARCHS)
+    set(ARCHS arm64)
   endif()
 elseif(PLATFORM_INT STREQUAL "TVOS")
   set(SDK_NAME appletvos)

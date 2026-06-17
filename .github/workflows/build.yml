@@ -76,6 +76,7 @@ jobs:
           ./make_ios_lua54.sh
           ./make_ios_lua53.sh
           ./make_ios_luajit.sh
+          ./make_ios_simulator_lua53.sh
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
@@ -85,7 +86,12 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           path: ./build/plugin_lua53/**/*
-          name: plugin_lua53_ios   
+          name: plugin_lua53_ios
+      - name: Upload53 Simulator
+        uses: actions/upload-artifact@v4
+        with:
+          path: ./build/plugin_lua53_simulator/**/*
+          name: lua53_simulator_ios
       - name: UploadJit
         uses: actions/upload-artifact@v4
         with:
